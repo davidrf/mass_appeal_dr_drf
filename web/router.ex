@@ -19,8 +19,9 @@ defmodule MassAppeal.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", MassAppeal do
-  #   pipe_through :api
-  # end
+  scope "/api", MassAppeal do
+    pipe_through :api
+
+    resources "/authentications", AuthenticationController, only: [:create]
+  end
 end
